@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d1d12ee2eff7f42a08236020985516, type: 3}
+  m_Name: Red Lion Racing
+  m_EditorClassIdentifier: 
+  name: Red Lion Racing
+  tag: RLR
+  mainColor: {fileID: 2100000, guid: 9a123df1882e8bd4595833d1c414b222, type: 2}
+  secondaryColor: {fileID: 2100000, guid: 10dc41aecf3cf474b8dcea4a40d46db9, type: 2}
+  detailColor: {fileID: 2100000, guid: 1db54a68c9d302641957d5ea0731a858, type: 2}
+  yearlyRevenue: 0
+  reliability: 0
+  speed: 0
+  acceleration: 0
+  fuelConsumption: 0
+  tireDegradation: 0
+  energyConsumption: 0
+  aeroSensibility: 0
+  downforce: 0

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d1d12ee2eff7f42a08236020985516, type: 3}
+  m_Name: Manson AMG
+  m_EditorClassIdentifier: 
+  name: Manson AMG
+  tag: MSA
+  mainColor: {fileID: 2100000, guid: 6dee22204f6b7cf4da96ec1cebba36e9, type: 2}
+  secondaryColor: {fileID: 2100000, guid: d71121bcfb2a86e428b76eed84600289, type: 2}
+  detailColor: {fileID: 2100000, guid: 7d0df802e21e6a249a44d0f844af0855, type: 2}
+  yearlyRevenue: 0
+  reliability: 0
+  speed: 0
+  acceleration: 0
+  fuelConsumption: 0
+  tireDegradation: 0
+  energyConsumption: 0
+  aeroSensibility: 0
+  downforce: 0

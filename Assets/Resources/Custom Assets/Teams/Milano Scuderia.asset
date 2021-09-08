@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d1d12ee2eff7f42a08236020985516, type: 3}
+  m_Name: Milano Scuderia
+  m_EditorClassIdentifier: 
+  name: Milano Scuderia
+  tag: MIL
+  mainColor: {fileID: 2100000, guid: 01763a1c279a5cd4d8f897f6b6cdbae5, type: 2}
+  secondaryColor: {fileID: 2100000, guid: 01763a1c279a5cd4d8f897f6b6cdbae5, type: 2}
+  detailColor: {fileID: 2100000, guid: 965a849b7bab2a04a9e561634f0929b7, type: 2}
+  yearlyRevenue: 140000000
+  reliability: 14
+  speed: 20
+  acceleration: 17
+  fuelConsumption: 14
+  tireDegradation: 17
+  energyConsumption: 19
+  aeroSensibility: 15
+  downforce: 15
