@@ -18,11 +18,11 @@ MonoBehaviour:
   secondaryColor: {fileID: 2100000, guid: 01763a1c279a5cd4d8f897f6b6cdbae5, type: 2}
   detailColor: {fileID: 2100000, guid: 965a849b7bab2a04a9e561634f0929b7, type: 2}
   yearlyRevenue: 140000000
-  reliability: 14
+  reliability: 16
   speed: 20
   acceleration: 17
-  fuelConsumption: 14
+  fuelConsumption: 15
   tireDegradation: 17
   energyConsumption: 19
-  aeroSensibility: 15
-  downforce: 15
+  aeroSensibility: 16
+  downforce: 16

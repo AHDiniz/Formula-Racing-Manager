@@ -17,12 +17,12 @@ MonoBehaviour:
   mainColor: {fileID: 2100000, guid: 9a123df1882e8bd4595833d1c414b222, type: 2}
   secondaryColor: {fileID: 2100000, guid: 10dc41aecf3cf474b8dcea4a40d46db9, type: 2}
   detailColor: {fileID: 2100000, guid: 1db54a68c9d302641957d5ea0731a858, type: 2}
-  yearlyRevenue: 0
-  reliability: 0
-  speed: 0
-  acceleration: 0
-  fuelConsumption: 0
-  tireDegradation: 0
-  energyConsumption: 0
-  aeroSensibility: 0
-  downforce: 0
+  yearlyRevenue: 140000000
+  reliability: 19
+  speed: 19
+  acceleration: 19
+  fuelConsumption: 19
+  tireDegradation: 20
+  energyConsumption: 20
+  aeroSensibility: 20
+  downforce: 20
