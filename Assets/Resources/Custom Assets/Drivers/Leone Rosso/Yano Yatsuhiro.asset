@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6555c0ab9e7b94bb30e36d826b560d, type: 3}
+  m_Name: Yano Yatsuhiro
+  m_EditorClassIdentifier: 
+  name: Yano Yatsuhiro
+  tag: YAT
+  age: 20
+  number: 22
+  experience: 1
+  talent: 20
+  progression: 11
+  awareness: 12
+  aggressiveness: 11
+  defensiveAbilities: 13
+  tireManagement: 10
+  fuelManagement: 11
+  energyManagement: 10

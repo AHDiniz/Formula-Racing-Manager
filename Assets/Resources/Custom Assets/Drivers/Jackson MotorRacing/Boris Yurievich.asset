@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6555c0ab9e7b94bb30e36d826b560d, type: 3}
+  m_Name: Boris Yurievich
+  m_EditorClassIdentifier: 
+  name: Boris Yurievich
+  tag: YUR
+  age: 20
+  number: 9
+  experience: 1
+  talent: 1
+  progression: 1
+  awareness: 1
+  aggressiveness: 6
+  defensiveAbilities: 5
+  tireManagement: 1
+  fuelManagement: 1
+  energyManagement: 1

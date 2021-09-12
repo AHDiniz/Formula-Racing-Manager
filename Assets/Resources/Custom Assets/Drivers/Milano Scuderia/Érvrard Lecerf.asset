@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6555c0ab9e7b94bb30e36d826b560d, type: 3}
+  m_Name: "\xC9rvrard Lecerf"
+  m_EditorClassIdentifier: 
+  name: "\xC9vrard Lecerf"
+  tag: LEC
+  age: 22
+  number: 16
+  experience: 8
+  talent: 20
+  progression: 20
+  awareness: 16
+  aggressiveness: 20
+  defensiveAbilities: 18
+  tireManagement: 18
+  fuelManagement: 16
+  energyManagement: 16
