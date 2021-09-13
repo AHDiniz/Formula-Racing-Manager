@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FormulaManager.Vehicle;
 
-namespace FormulaManager.Race
+namespace FormulaManager.Management
 {
     public class Sector : MonoBehaviour
     {
@@ -27,7 +27,6 @@ namespace FormulaManager.Race
             {
                 VehicleController controller = col.gameObject.GetComponent<VehicleController>();
                 controller.SpeedScale = expectedSpeedScale;
-                Debug.Log("Speed = " + controller.Speed);
             }
         }
     }

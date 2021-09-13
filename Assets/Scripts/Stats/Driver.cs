@@ -20,6 +20,7 @@ namespace FormulaManager.Stats
         [SerializeField, Range(1, 20)] private int tireManagement;
         [SerializeField, Range(1, 20)] private int fuelManagement;
         [SerializeField, Range(1, 20)] private int energyManagement;
+        [SerializeField] private Team team;
 
         public string Name { get => name; }
         public string Tag { get => tag; }
@@ -34,5 +35,6 @@ namespace FormulaManager.Stats
         public int TireManagement { get => tireManagement; }
         public int FuelManagement { get => fuelManagement; }
         public int EnergyManagement { get => energyManagement; }
+        public Team CurrentTeam { get => team; }
     }
 }

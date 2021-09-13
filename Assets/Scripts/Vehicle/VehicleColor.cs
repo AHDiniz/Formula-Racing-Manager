@@ -8,15 +8,18 @@ namespace FormulaManager.Vehicle
     [RequireComponent(typeof(MeshRenderer))]
     public class VehicleColor : MonoBehaviour
     {
-        [SerializeField] private Team team;
+        [SerializeField] private Driver driver;
+
+        public Driver Driver { get => driver; set => driver = value; }
 
         private MeshRenderer meshRenderer;
 
         // Start is called before the first frame update
-        void Start()
+        private void OnEnable()
         {
             meshRenderer = GetComponent<MeshRenderer>();
 
+            Team team = driver.CurrentTeam;
             Material[] materials = {team.MainColor, team.SecondaryColor, team.DetailColor};
             meshRenderer.materials = materials;
         }

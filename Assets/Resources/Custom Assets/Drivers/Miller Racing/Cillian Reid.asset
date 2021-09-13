@@ -25,3 +25,4 @@ MonoBehaviour:
   tireManagement: 17
   fuelManagement: 16
   energyManagement: 15
+  team: {fileID: 11400000, guid: a887cad93add25b439a418710e0a4a99, type: 2}
