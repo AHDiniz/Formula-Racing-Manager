@@ -27,6 +27,12 @@ namespace FormulaManager.Management
             {
                 VehicleController controller = col.gameObject.GetComponent<VehicleController>();
                 controller.SpeedScale = expectedSpeedScale;
+
+                if (startFinishLine)
+                {
+                    Lap lap = col.gameObject.GetComponent<Lap>();
+                    lap.OnStartFinishLine();
+                }
             }
         }
     }
