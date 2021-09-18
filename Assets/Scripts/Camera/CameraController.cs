@@ -19,6 +19,7 @@ namespace FormulaManager.Camera
         [SerializeField] private Vector3 zoomAmount;
         [SerializeField] private float minDistance, maxDistance;
 
+        private bool canMove = true;
         private float movementSpeed;
         private Vector3 newPosition, newZoom;
         private Vector3 dragStart, dragCurrent;
@@ -34,13 +35,23 @@ namespace FormulaManager.Camera
 
         private void Update()
         {
-            if (followTarget != null) transform.position = followTarget.position;
-            else HandleMovementInput();
+            if (followTarget != null)
+                transform.position = followTarget.position;
+            else if (canMove)
+                HandleMovementInput();
 
-            HandleRotationInput();
-            HandleZoomInput();
+            if (canMove)
+            {
+                HandleRotationInput();
+                HandleZoomInput();
+            }
             
-            if (Input.GetKey(KeyCode.Escape)) followTarget = null;
+            if (Input.GetKey(KeyCode.Escape) && canMove) followTarget = null;
+        }
+
+        public void SwitchCanMoveOnOff()
+        {
+            canMove = !canMove;
         }
 
         private void HandleMovementInput()

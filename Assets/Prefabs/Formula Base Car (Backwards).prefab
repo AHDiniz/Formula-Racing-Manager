@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d8c6b0b5bafda448b4345750708c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelUsageOnNeutralPace: 0.001
+  maxFuelUsage: 0.001
 --- !u!114 &1347797787760015419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +462,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5e3e76e5684ae46b900b377c2512fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedByTireHealthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 37.754715
+      outSlope: 37.754715
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.2160738
+    - serializedVersion: 3
+      time: 0.01421291
+      value: 0.7579856
+      inSlope: 0.87142193
+      outSlope: 0.87142193
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.045614142
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0
+      outSlope: -0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.068558775
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &5014827781230806625
 MonoBehaviour:
   m_ObjectHideFlags: 0

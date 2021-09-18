@@ -35,12 +35,13 @@ namespace FormulaManager.Vehicle
         [SerializeField] private bool goBackwards = true;
 
         private float speed = 0, distanceTravelled = 0f, speedScale = 1, speedMultiplier = 0;
-        private float maxSpeed = 0, paceMultiplier = .9f;
+        private float maxSpeed = 0, paceMultiplier = .9f, tireMultiplier = 1f;
         private Pace pace;
         private Team team;
 
         public float SpeedScale { get => speedScale; set => speedScale = value; }
         public float Speed { get => speed; }
+        public float PaceMultiplier { get => paceMultiplier; }
         public Pace CurrentPace { get => pace; set => pace = value; }
         public Driver Driver { get => driver; set => driver = value; }
         public PathCreator Path { get => path; set => path = value; }
@@ -89,7 +90,7 @@ namespace FormulaManager.Vehicle
             float targetSpeed = SpeedScale * maxSpeed * speedMultiplier;
             speed = Mathf.Lerp(speed, targetSpeed, Time.deltaTime * 1 / ((float)team.Acceleration / 20));
             speed = Mathf.Clamp(speed, minBaseSpeed, maxSpeed);
-            if (!goBackwards) distanceTravelled += speed * paceMultiplier * Time.deltaTime;
+            if (!goBackwards) distanceTravelled += speed * paceMultiplier * tireMultiplier * Time.deltaTime;
             else distanceTravelled += -speed * Time.deltaTime;
             transform.position = path.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
             transform.rotation = path.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
@@ -100,10 +101,14 @@ namespace FormulaManager.Vehicle
             distanceTravelled = path.path.GetClosestDistanceAlongPath(transform.position);
         }
 
-        // TODO: Call this in a race event manager:
         public void Launch()
         {
             speed = maxSpeed;
+        }
+
+        public void SetTireDegradationMultiplier(float d)
+        {
+            tireMultiplier = d;
         }
     }
 }

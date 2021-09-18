@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using FormulaManager.Vehicle;
 
 namespace FormulaManager.Management
@@ -10,6 +11,7 @@ namespace FormulaManager.Management
         [SerializeField, Range(0, 1)] private float expectedSpeedScale = 1;
         [SerializeField] private bool startFinishLine = false;
         [SerializeField] private string carTag = "Car";
+        [SerializeField] private UnityEvent OnStartFinishLine;
 
         private float timer = 0f;
 
@@ -32,6 +34,7 @@ namespace FormulaManager.Management
                 {
                     Lap lap = col.gameObject.GetComponent<Lap>();
                     lap.OnStartFinishLine();
+                    OnStartFinishLine.Invoke();
                 }
             }
         }

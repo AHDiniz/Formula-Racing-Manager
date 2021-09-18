@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 7757975285337785995}
   - component: {fileID: 7757975285337785994}
   - component: {fileID: -3621248067758225103}
+  - component: {fileID: 7719499361775904177}
+  - component: {fileID: -6491592813990273419}
+  - component: {fileID: -3087756542899107124}
   m_Layer: 3
   m_Name: Formula Base Car (Front)
   m_TagString: Car
@@ -183,6 +186,85 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09790407c179bb04682f9c3a930aeb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7719499361775904177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757975285337786101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d8c6b0b5bafda448b4345750708c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFuelUsage: 0.001
+--- !u!114 &-6491592813990273419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757975285337786101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e3e76e5684ae46b900b377c2512fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedByTireHealthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 37.754715
+      outSlope: 37.754715
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.2160738
+    - serializedVersion: 3
+      time: 0.01421291
+      value: 0.7579856
+      inSlope: 0.87142193
+      outSlope: 0.87142193
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.045614142
+    - serializedVersion: 3
+      time: 0.8609171
+      value: 0.99786323
+      inSlope: -0.03591727
+      outSlope: -0.03591727
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07394304
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.9432561
+      inSlope: -0.61370134
+      outSlope: -0.61370134
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.41680893
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &-3087756542899107124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757975285337786101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d34218508794b441b751091befd1309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7757975285969513307
