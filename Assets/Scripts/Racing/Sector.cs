@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using FormulaManager.Vehicle;
 
-namespace FormulaManager.Management
+namespace FormulaManager.Racing
 {
     public class Sector : MonoBehaviour
     {

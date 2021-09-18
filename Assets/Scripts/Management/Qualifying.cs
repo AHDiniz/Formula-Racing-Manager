@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 using FormulaManager.Vehicle;
+using FormulaManager.Racing;
 using FormulaManager.Stats;
 using FormulaManager.UI;
 

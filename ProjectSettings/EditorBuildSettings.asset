@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Persistent Scene.unity
+    guid: 3c19561cd5063f249aa3fdc894ef0a5c
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: d7db2bd4d8c6ef74d83f6e175a521eb1
+  - enabled: 1
     path: Assets/Scenes/Brazilian Grand Prix.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/Scenes/Austrian Grand Prix.unity
+    guid: d7414359da4434a45a45f73f52d3b9fb
   m_configObjects: {}

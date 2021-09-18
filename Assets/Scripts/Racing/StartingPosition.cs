@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
-namespace FormulaManager.Management
+namespace FormulaManager.Racing
 {
     public class StartingPosition : MonoBehaviour
     {

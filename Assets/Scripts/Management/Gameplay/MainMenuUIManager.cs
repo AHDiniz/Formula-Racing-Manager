@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using FormulaManager.Stats;
 using FormulaManager.Management.Global;
 
@@ -14,24 +15,33 @@ namespace FormulaManager.Management.Gameplay
         [SerializeField] private GameObject raceSelectionParent;
         [SerializeField] private GameObject teamSelectionParent;
 
+        [Header("Slider References")]
+        [SerializeField] private Slider sfxVolumeSlider;
+        [SerializeField] private Slider musicVolumeSlider;
+        [SerializeField] private Slider raceDurationSlider;
+
         private Team playerTeam;
         private string selectedRace;
 
         private AppManager app;
+        private SaveData saveData;
 
         void IGameplayManager.Initialize()
         {
             app = AppManager.Instance;
+            saveData = new SaveData();
         }
 
         void IGameplayManager.Tick()
         {
-            // Won't do anything here probably
+            saveData.SFXVolume = sfxVolumeSlider.value;
+            saveData.MusicVolume = musicVolumeSlider.value;
+            saveData.RaceDuration = raceDurationSlider.value;
         }
 
         void IGameplayManager.Finish()
         {
-            // Won't do anything here probably
+            app.Save("player_data", saveData);
         }
 
         public void GoToOptions(GameObject toDeactivate)
@@ -66,6 +76,7 @@ namespace FormulaManager.Management.Gameplay
         public void SetPlayerTeam(Team playerTeam)
         {
             this.playerTeam = playerTeam;
+            saveData.PlayerTeamName = this.playerTeam.Name;
         }
 
         public void SetRace(string race)

@@ -22,25 +22,25 @@ namespace FormulaManager.Management.Global
             }
         }
 
-        public void LoadDefaultScene(GameObject[] managers)
+        public void LoadDefaultScene()
         {
             // This is where the code to load the main menu scene comes in.
-            mainMenuMode.Initialize(managers);
+            mainMenuMode.Initialize();
 
             // TODO: If the game is running on the editor, run the currently edited scene
         }
 
-        public void LoadSceneByName(string name, GameObject[] managers)
+        public void LoadSceneByName(string name)
         {
             // Loading the mode with a given name.
             if (name == mainMenuMode.SceneName)
-                mainMenuMode.Initialize(managers);
+                mainMenuMode.Initialize();
             
             foreach (IGameMode race in raceModes)
             {
                 if (name == race.SceneName)
                 {
-                    race.Initialize(managers);
+                    race.Initialize();
                     break;
                 }
             }

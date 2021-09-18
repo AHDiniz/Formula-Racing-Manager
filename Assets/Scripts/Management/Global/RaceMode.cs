@@ -17,12 +17,12 @@ namespace FormulaManager.Management.Global
             this.sceneName = sceneName;
         }
 
-        void IGameMode.Initialize(GameObject[] managers)
+        void IGameMode.Initialize()
         {
             SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive); // TODO: Change this to async operation later
             GameObject context = new GameObject("Context");
             Context c = context.AddComponent<Context>() as Context;
-            c.InstantiateManagersPrefabs(managers);
+            c.GetManagers();
         }
 
         void IGameMode.Finish()

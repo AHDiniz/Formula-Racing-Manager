@@ -6,10 +6,15 @@ namespace FormulaManager.Management.Global
 {
     public class OptionsManager
     {
+        private BinaryFormatter formatter;
+
+        public OptionsManager()
+        {
+            formatter = new BinaryFormatter();
+        }
+
         public bool Save(string saveName, object saveData)
         {
-            BinaryFormatter formatter = GetBinaryFormatter();
-            
             if (!Directory.Exists(Application.persistentDataPath + "/saves"))
                 Directory.CreateDirectory(Application.persistentDataPath + "/saves");
 
@@ -26,7 +31,6 @@ namespace FormulaManager.Management.Global
             if (!File.Exists(path))
                 return null;
             
-            BinaryFormatter formatter = GetBinaryFormatter();
             FileStream file = File.Open(path, FileMode.Open);
 
             try
@@ -41,13 +45,6 @@ namespace FormulaManager.Management.Global
                 file.Close();
                 return null;
             }
-        }
-
-        private BinaryFormatter GetBinaryFormatter()
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            return formatter;
         }
     }
 }

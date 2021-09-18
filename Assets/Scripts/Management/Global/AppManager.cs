@@ -20,19 +20,17 @@ namespace FormulaManager.Management.Global
         [Header("Loading Screen")]
         [SerializeField] private GameObject loadingScreen;
 
-        [Header("Managers Prefabs")]
-        [SerializeField] private List<GameObject> mainMenuManagers = new List<GameObject>();
-        [SerializeField] private List<GameObject> raceManagers = new List<GameObject>();
-
         private static AppManager _instance;
         public static AppManager Instance { get => _instance; }
 
         private GameModeManager gameModeManager;
+        private OptionsManager optionsManager;
 
         private void Awake()
         {
             _instance = this;
             gameModeManager = new GameModeManager(mainMenuSceneName, raceSceneNames.ToArray());
+            optionsManager = new OptionsManager();
             Object.DontDestroyOnLoad(gameObject);
             Object.DontDestroyOnLoad(loadingScreen);
             loadingScreen.SetActive(false);
@@ -40,14 +38,17 @@ namespace FormulaManager.Management.Global
 
         private void Start()
         {
-            gameModeManager.LoadDefaultScene(mainMenuManagers.ToArray());
+            gameModeManager.LoadDefaultScene();
         }
 
         public void LoadGameMode(string name)
         {
             if (name == mainMenuSceneName)
-                gameModeManager.LoadSceneByName(name, mainMenuManagers.ToArray());
-            else gameModeManager.LoadSceneByName(name, raceManagers.ToArray());
+                gameModeManager.LoadSceneByName(name);
+            else gameModeManager.LoadSceneByName(name);
         }
+
+        public void Save(string saveName, object saveData) => optionsManager.Save(saveName, saveData);
+        public object Load(string saveName) => optionsManager.Load(saveName);
     }
 }

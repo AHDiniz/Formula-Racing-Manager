@@ -1447,7 +1447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &631735673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2372,7 +2372,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5168,7 +5168,7 @@ GameObject:
   - component: {fileID: 1435060110}
   m_Layer: 0
   m_Name: Main Menu Manager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5205,6 +5205,9 @@ MonoBehaviour:
   optionsParent: {fileID: 954907181}
   raceSelectionParent: {fileID: 270963727}
   teamSelectionParent: {fileID: 631735672}
+  sfxVolumeSlider: {fileID: 1469471826}
+  musicVolumeSlider: {fileID: 1447618765}
+  raceDurationSlider: {fileID: 782860451}
 --- !u!1 &1447618763
 GameObject:
   m_ObjectHideFlags: 0
@@ -5291,7 +5294,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5381,7 +5384,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7163,7 +7166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1990381917
 RectTransform:
   m_ObjectHideFlags: 0

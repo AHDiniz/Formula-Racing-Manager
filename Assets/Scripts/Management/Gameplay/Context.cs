@@ -24,14 +24,20 @@ namespace FormulaManager.Management.Gameplay
             }
         }
 
-        public void InstantiateManagersPrefabs(GameObject[] prefabs)
+        public void GetManagers()
         {
-            foreach (GameObject prefab in prefabs)
+            GameObject gameController = GameObject.FindWithTag("GameController");
+            if (gameController != null)
             {
-                GameObject manager = Instantiate(prefab) as GameObject;
-                IGameplayManager managerComponent = manager.GetComponent<IGameplayManager>();
-                gameplayManagers.Add(managerComponent);
-                managerComponent.Initialize();
+                IGameplayManager[] managers = gameController.GetComponents<IGameplayManager>();
+                if (managers.Length > 0)
+                {
+                    foreach (IGameplayManager m in managers)
+                    {
+                        m.Initialize();
+                        gameplayManagers.Add(m);
+                    }
+                }
             }
         }
     }
