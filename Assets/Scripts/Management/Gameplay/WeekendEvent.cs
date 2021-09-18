@@ -23,10 +23,10 @@ namespace FormulaManager.Management.Gameplay
             
             foreach (Driver d in drivers)
                 this.drivers.Add(d);
-            foreach (StartingPostion p in startingPositions)
+            foreach (StartingPosition p in startingPositions)
                 this.startingPositions.Add(p);
             
-            
+
         }
 
         public virtual void Tick()
