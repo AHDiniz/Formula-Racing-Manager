@@ -25,12 +25,14 @@ namespace FormulaManager.Management.Global
 
         private GameModeManager gameModeManager;
         private OptionsManager optionsManager;
+        private LoadingManager loadingManager;
 
         private void Awake()
         {
             _instance = this;
             gameModeManager = new GameModeManager(mainMenuSceneName, raceSceneNames.ToArray());
             optionsManager = new OptionsManager();
+            loadingManager = new LoadingManager(loadingScreen);
             Object.DontDestroyOnLoad(gameObject);
             Object.DontDestroyOnLoad(loadingScreen);
             loadingScreen.SetActive(false);
@@ -38,17 +40,20 @@ namespace FormulaManager.Management.Global
 
         private void Start()
         {
+            loadingScreen.SetActive(true);
             gameModeManager.LoadDefaultScene();
+            StartCoroutine(loadingManager.CheckProgress());
         }
 
         public void LoadGameMode(string name)
         {
-            if (name == mainMenuSceneName)
-                gameModeManager.LoadSceneByName(name);
-            else gameModeManager.LoadSceneByName(name);
+            loadingScreen.SetActive(true);
+            gameModeManager.LoadSceneByName(name);
+            StartCoroutine(loadingManager.CheckProgress());
         }
 
         public void Save(string saveName, object saveData) => optionsManager.Save(saveName, saveData);
         public object Load(string saveName) => optionsManager.Load(saveName);
+        public void AddAsyncOperation(AsyncOperation operation) => loadingManager.AddAsyncOperation(operation);
     }
 }

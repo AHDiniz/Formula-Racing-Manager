@@ -1,12 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FormulaManager.Management.Gameplay
 {
     public class Context : MonoBehaviour
     {
         private List<IGameplayManager> gameplayManagers = new List<IGameplayManager>();
+        private GameObject gameController;
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
 
         private void Update()
         {
@@ -24,23 +36,16 @@ namespace FormulaManager.Management.Gameplay
             }
         }
 
-        public void GetManagers()
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            GameObject gameController = GameObject.FindWithTag("GameController");
-            Debug.Log("A");
-            if (gameController != null)
+            if (scene.name.Contains("Grand Prix") || scene.name == "Main Menu")
             {
-                Debug.Log("B");
+                gameController = GameObject.FindWithTag("GameController");
                 IGameplayManager[] managers = gameController.GetComponents<IGameplayManager>();
-                if (managers.Length > 0)
+                foreach (IGameplayManager m in managers)
                 {
-                    Debug.Log("C");
-                    foreach (IGameplayManager m in managers)
-                    {
-                        Debug.Log("D");
-                        m.Initialize();
-                        gameplayManagers.Add(m);
-                    }
+                    m.Initialize();
+                    gameplayManagers.Add(m);
                 }
             }
         }

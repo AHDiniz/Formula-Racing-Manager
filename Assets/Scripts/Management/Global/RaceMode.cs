@@ -9,25 +9,28 @@ namespace FormulaManager.Management.Global
     public class RaceMode : IGameMode
     {
         private string sceneName;
+        private GameObject context;
+        private AppManager app;
 
         public string SceneName { get => sceneName; }
 
         public RaceMode(string sceneName)
         {
             this.sceneName = sceneName;
+            app = AppManager.Instance;
         }
 
         void IGameMode.Initialize()
         {
-            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive); // TODO: Change this to async operation later
-            GameObject context = new GameObject("Context");
+            app.AddAsyncOperation(SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive));
+            context = new GameObject("Context");
             Context c = context.AddComponent<Context>() as Context;
-            c.GetManagers();
         }
 
         void IGameMode.Finish()
         {
-            SceneManager.UnloadSceneAsync(sceneName);
+            Object.Destroy(context);
+            app.AddAsyncOperation(SceneManager.UnloadSceneAsync(sceneName));
         }
     }
 }

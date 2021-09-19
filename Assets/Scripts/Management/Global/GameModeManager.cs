@@ -6,12 +6,9 @@ namespace FormulaManager.Management.Global
 {
     public class GameModeManager
     {
-        // Contains a list of the possible game modes
-        // Has method to call default mode (main menu)
-        // Also has a method to call the mode of the currently edited scene
-
         private IGameMode mainMenuMode;
         private List<IGameMode> raceModes = new List<IGameMode>();
+        private IGameMode currentMode = null;
 
         public GameModeManager(string mainMenuSceneName, string[] raceSceneNames)
         {
@@ -24,7 +21,8 @@ namespace FormulaManager.Management.Global
 
         public void LoadDefaultScene()
         {
-            // This is where the code to load the main menu scene comes in.
+            if (currentMode != null) currentMode.Finish();
+            currentMode = mainMenuMode;
             mainMenuMode.Initialize();
 
             // TODO: If the game is running on the editor, run the currently edited scene
@@ -32,16 +30,23 @@ namespace FormulaManager.Management.Global
 
         public void LoadSceneByName(string name)
         {
-            // Loading the mode with a given name.
+            if (currentMode != null) currentMode.Finish();
+
             if (name == mainMenuMode.SceneName)
-                mainMenuMode.Initialize();
-            
-            foreach (IGameMode race in raceModes)
             {
-                if (name == race.SceneName)
+                currentMode = mainMenuMode;
+                mainMenuMode.Initialize();
+            }
+            else
+            {
+                foreach (IGameMode race in raceModes)
                 {
-                    race.Initialize();
-                    break;
+                    if (name == race.SceneName)
+                    {
+                        currentMode = race;
+                        race.Initialize();
+                        break;
+                    }
                 }
             }
         }
