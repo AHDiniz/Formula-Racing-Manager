@@ -1,13 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-/*
-Game Architecture: https://www.youtube.com/watch?v=JQ0Jdfxo7Cg
-Save System: https://www.youtube.com/watch?v=5roZtuqZyuw
-Loading Screen: https://www.youtube.com/watch?v=iXWFTgFNRdM
-Progress Bars: https://www.youtube.com/watch?v=J1ng1zA3-Pk
-*/
+using FormulaManager.Management.Gameplay;
 
 namespace FormulaManager.Management.Global
 {
@@ -35,25 +29,28 @@ namespace FormulaManager.Management.Global
             loadingManager = new LoadingManager(loadingScreen);
             Object.DontDestroyOnLoad(gameObject);
             Object.DontDestroyOnLoad(loadingScreen);
-            loadingScreen.SetActive(false);
         }
 
         private void Start()
         {
             loadingScreen.SetActive(true);
             gameModeManager.LoadDefaultScene();
-            StartCoroutine(loadingManager.CheckProgress());
+            StartCoroutine(loadingManager.CheckSceneLoadingProgress());
         }
 
         public void LoadGameMode(string name)
         {
             loadingScreen.SetActive(true);
             gameModeManager.LoadSceneByName(name);
-            StartCoroutine(loadingManager.CheckProgress());
+            StartCoroutine(loadingManager.CheckSceneLoadingProgress());
         }
 
         public void Save(string saveName, object saveData) => optionsManager.Save(saveName, saveData);
         public object Load(string saveName) => optionsManager.Load(saveName);
+        
         public void AddAsyncOperation(AsyncOperation operation) => loadingManager.AddAsyncOperation(operation);
+        public void AddGameplayManager(IGameplayManager manager) => loadingManager.AddGameplayManager(manager);
+        public void ClearOperationsList() => loadingManager.ClearOperationsList();
+        public void ClearManagersList() => loadingManager.ClearManagersList();
     }
 }

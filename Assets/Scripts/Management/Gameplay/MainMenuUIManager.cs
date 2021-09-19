@@ -20,16 +20,20 @@ namespace FormulaManager.Management.Gameplay
         [SerializeField] private Slider musicVolumeSlider;
         [SerializeField] private Slider raceDurationSlider;
 
+        private bool isDone = false;
         private Team playerTeam;
         private string selectedRace;
 
         private AppManager app;
         private SaveData saveData = new SaveData();
 
+        bool IGameplayManager.IsDone { get => isDone; }
+
         void IGameplayManager.Initialize()
         {
             Debug.Log("Initialized Main Menu Manager.");
             app = AppManager.Instance;
+            StartCoroutine(WaitForInitialization());
         }
 
         void IGameplayManager.Tick()
@@ -88,6 +92,12 @@ namespace FormulaManager.Management.Gameplay
         {
             // TODO: Call options manager here to set the team that the player chose
             app.LoadGameMode(selectedRace);
+        }
+
+        private IEnumerator WaitForInitialization()
+        {
+            yield return new WaitForSeconds(.5f);
+            isDone = true;
         }
     }
 }

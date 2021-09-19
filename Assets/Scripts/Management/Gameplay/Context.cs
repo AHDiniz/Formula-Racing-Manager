@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FormulaManager.Management.Global;
 
 namespace FormulaManager.Management.Gameplay
 {
@@ -9,9 +10,11 @@ namespace FormulaManager.Management.Gameplay
     {
         private List<IGameplayManager> gameplayManagers = new List<IGameplayManager>();
         private GameObject gameController;
+        private AppManager app;
 
         private void OnEnable()
         {
+            app = AppManager.Instance;
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
@@ -30,6 +33,8 @@ namespace FormulaManager.Management.Gameplay
 
         private void OnDestroy()
         {
+            app.ClearManagersList();
+            app.ClearOperationsList();
             foreach (IGameplayManager manager in gameplayManagers)
             {
                 manager.Finish();
@@ -44,8 +49,9 @@ namespace FormulaManager.Management.Gameplay
                 IGameplayManager[] managers = gameController.GetComponents<IGameplayManager>();
                 foreach (IGameplayManager m in managers)
                 {
-                    m.Initialize();
                     gameplayManagers.Add(m);
+                    app.AddGameplayManager(m);
+                    m.Initialize();
                 }
             }
         }

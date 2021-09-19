@@ -1,25 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FormulaManager.Management.Gameplay;
 
 namespace FormulaManager.Management.Global
 {
     public class LoadingManager
     {
         private List<AsyncOperation> operations;
+        private List<IGameplayManager> managers;
         private GameObject loadingScreen;
 
         public LoadingManager(GameObject loadingScreen)
         {
             operations = new List<AsyncOperation>();
+            managers = new List<IGameplayManager>();
             this.loadingScreen = loadingScreen;
         }
 
-        public IEnumerator CheckProgress()
+        public IEnumerator CheckSceneLoadingProgress()
         {
+            Debug.Log("Checking scene loading progress.");
             foreach (AsyncOperation operation in operations)
             {
                 while (!operation.isDone)
+                {
+                    yield return null;
+                }
+            }
+
+            yield return CheckInitializationProgress();
+        }
+
+        public IEnumerator CheckInitializationProgress()
+        {
+            Debug.Log("Checking initialization progress.");
+            foreach(IGameplayManager m in managers)
+            {
+                while (!m.IsDone)
                 {
                     yield return null;
                 }
@@ -33,9 +51,19 @@ namespace FormulaManager.Management.Global
             operations.Add(operation);
         }
 
+        public void AddGameplayManager(IGameplayManager manager)
+        {
+            managers.Add(manager);
+        }
+
         public void ClearOperationsList()
         {
             operations.Clear();
+        }
+
+        public void ClearManagersList()
+        {
+            managers.Clear();
         }
     }
 }

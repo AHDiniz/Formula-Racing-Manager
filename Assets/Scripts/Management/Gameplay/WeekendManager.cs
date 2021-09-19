@@ -16,6 +16,7 @@ namespace FormulaManager.Management.Gameplay
         [SerializeField] private List<Driver> drivers = new List<Driver>();
         [SerializeField] private List<StartingPosition> startingPositions = new List<StartingPosition>();
 
+        private bool isDone = false;
         private int currentEvent = 0;
         private float raceDuration;
         private string playerTeamName;
@@ -24,6 +25,8 @@ namespace FormulaManager.Management.Gameplay
         private AppManager app;
 
         public Driver[] PlayerDrivers { get => playerDrivers; }
+
+        bool IGameplayManager.IsDone { get => isDone; }
 
         void IGameplayManager.Initialize()
         {
@@ -44,6 +47,8 @@ namespace FormulaManager.Management.Gameplay
             
             events[currentEvent].Manager = this;
             events[currentEvent].Initialize(carPrefab, path, drivers.ToArray(), startingPositions.ToArray());
+
+            StartCoroutine(WaitForInitialization());
         }
 
         void IGameplayManager.Tick()
@@ -63,6 +68,12 @@ namespace FormulaManager.Management.Gameplay
             if (events[currentEvent].Manager == null)
                 events[currentEvent].Manager = this;
             events[currentEvent].Initialize(carPrefab, path, drivers.ToArray(), startingPositions.ToArray());
+        }
+
+        private IEnumerator WaitForInitialization()
+        {
+            yield return new WaitForSeconds(.5f);
+            isDone = true;
         }
     }
 }
