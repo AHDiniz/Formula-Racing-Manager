@@ -24,12 +24,12 @@ namespace FormulaManager.Management.Gameplay
         private string selectedRace;
 
         private AppManager app;
-        private SaveData saveData;
+        private SaveData saveData = new SaveData();
 
         void IGameplayManager.Initialize()
         {
+            Debug.Log("Initialized Main Menu Manager.");
             app = AppManager.Instance;
-            saveData = new SaveData();
         }
 
         void IGameplayManager.Tick()

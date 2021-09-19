@@ -27,13 +27,17 @@ namespace FormulaManager.Management.Gameplay
         public void GetManagers()
         {
             GameObject gameController = GameObject.FindWithTag("GameController");
+            Debug.Log("A");
             if (gameController != null)
             {
+                Debug.Log("B");
                 IGameplayManager[] managers = gameController.GetComponents<IGameplayManager>();
                 if (managers.Length > 0)
                 {
+                    Debug.Log("C");
                     foreach (IGameplayManager m in managers)
                     {
+                        Debug.Log("D");
                         m.Initialize();
                         gameplayManagers.Add(m);
                     }
