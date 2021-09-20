@@ -62,8 +62,6 @@ namespace FormulaManager.Vehicle
                 speedMultiplier *= 1.5f;
             else if (speedMultiplier > 1f)
                 speedMultiplier *= .75f;
-
-            Debug.Log("Multiplier " + driver.Name + ": " + speedMultiplier);
         }
 
         private void Update()

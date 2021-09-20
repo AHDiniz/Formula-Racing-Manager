@@ -31,7 +31,6 @@ namespace FormulaManager.Management.Gameplay
 
         void IGameplayManager.Initialize()
         {
-            Debug.Log("Initialized Main Menu Manager.");
             app = AppManager.Instance;
             StartCoroutine(WaitForInitialization());
         }

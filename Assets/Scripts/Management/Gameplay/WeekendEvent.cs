@@ -10,7 +10,10 @@ namespace FormulaManager.Management.Gameplay
 {
     public class WeekendEvent : MonoBehaviour
     {
-        [SerializeField] private float duration;
+        [SerializeField] private float duration = 3600f;
+        [SerializeField] private float launchWaitTime = 5f;
+
+        private WaitForSeconds launchStall;
 
         protected WeekendManager manager = null;
         protected float timer = 0f;
@@ -20,7 +23,8 @@ namespace FormulaManager.Management.Gameplay
 
         public virtual
         void Initialize(GameObject carPrefab, PathCreator path, Driver[] drivers, StartingPosition[] startingPositions)
-        {            
+        {
+            launchStall = new WaitForSeconds(launchWaitTime);
             for (int i = 0; i < drivers.Length; ++i)
             {
                 float t = startingPositions[i].GetTForThisPosition();
@@ -36,7 +40,11 @@ namespace FormulaManager.Management.Gameplay
                 controller.Driver = color.Driver = drivers[i];
                 controller.Path = path;
 
+                ExtraCarInit(carInstance, controller);
+
                 carInstance.SetActive(true);
+
+                StartCoroutine(Launch(controller));
             }
         }
 
@@ -53,6 +61,17 @@ namespace FormulaManager.Management.Gameplay
         public virtual void Finish()
         {
 
+        }
+
+        protected virtual void ExtraCarInit(GameObject carInstance, VehicleController controller)
+        {
+
+        }
+
+        private IEnumerator Launch(VehicleController controller)
+        {
+            yield return launchStall;
+            controller.Launch();
         }
     }
 }

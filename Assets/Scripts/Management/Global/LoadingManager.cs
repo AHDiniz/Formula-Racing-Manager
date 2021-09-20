@@ -20,7 +20,6 @@ namespace FormulaManager.Management.Global
 
         public IEnumerator CheckSceneLoadingProgress()
         {
-            Debug.Log("Checking scene loading progress.");
             foreach (AsyncOperation operation in operations)
             {
                 while (!operation.isDone)
@@ -34,7 +33,6 @@ namespace FormulaManager.Management.Global
 
         public IEnumerator CheckInitializationProgress()
         {
-            Debug.Log("Checking initialization progress.");
             foreach(IGameplayManager m in managers)
             {
                 while (!m.IsDone)
