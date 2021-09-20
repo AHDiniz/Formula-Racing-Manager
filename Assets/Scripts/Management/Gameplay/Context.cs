@@ -20,6 +20,10 @@ namespace FormulaManager.Management.Gameplay
 
         private void OnDisable()
         {
+            foreach (IGameplayManager manager in gameplayManagers)
+            {
+                manager.Finish();
+            }
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
@@ -28,14 +32,6 @@ namespace FormulaManager.Management.Gameplay
             foreach (IGameplayManager manager in gameplayManagers)
             {
                 manager.Tick();
-            }
-        }
-
-        private void OnDestroy()
-        {
-            foreach (IGameplayManager manager in gameplayManagers)
-            {
-                manager.Finish();
             }
         }
 

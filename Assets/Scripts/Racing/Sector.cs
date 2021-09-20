@@ -11,12 +11,13 @@ namespace FormulaManager.Racing
         [SerializeField, Range(0, 1)] private float expectedSpeedScale = 1;
         [SerializeField] private bool startFinishLine = false;
         [SerializeField] private string carTag = "Car";
-        [SerializeField] private UnityEvent OnStartFinishLine;
 
+        private bool lastLap = false;
         private float timer = 0f;
 
         public float ExpectedSpeedScale { get => expectedSpeedScale; }
         public bool StartFinishLine { get => startFinishLine; }
+        public bool LastLap { get => lastLap; set => lastLap = value; }
 
         private void Update()
         {
@@ -32,9 +33,10 @@ namespace FormulaManager.Racing
 
                 if (startFinishLine)
                 {
-                    Lap lap = col.gameObject.GetComponent<Lap>();
-                    lap.OnStartFinishLine();
-                    OnStartFinishLine.Invoke();
+                    LapCounter lapCounter = col.gameObject.GetComponent<LapCounter>();
+                    if (lastLap)
+                        lapCounter.Finish();
+                    else lapCounter.StartLap();
                 }
             }
         }

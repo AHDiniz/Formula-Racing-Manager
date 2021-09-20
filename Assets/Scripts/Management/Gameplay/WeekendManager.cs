@@ -25,6 +25,7 @@ namespace FormulaManager.Management.Gameplay
         private AppManager app;
 
         public Driver[] PlayerDrivers { get => playerDrivers; }
+        public WeekendEvent CurrentEvent { get => events[currentEvent]; }
 
         bool IGameplayManager.IsDone { get => isDone; }
 
@@ -32,8 +33,12 @@ namespace FormulaManager.Management.Gameplay
         {
             app = AppManager.Instance;
             saveData = app.Load("player_data") as SaveData;
-            raceDuration = saveData.RaceDuration;
-            playerTeamName = saveData.PlayerTeamName;
+
+            if (saveData != null)
+            {
+                raceDuration = saveData.RaceDuration;
+                playerTeamName = saveData.PlayerTeamName;
+            }
 
             int playerDriverIndex = 0;
             foreach (Driver d in drivers)

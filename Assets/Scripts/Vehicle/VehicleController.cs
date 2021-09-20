@@ -104,6 +104,11 @@ namespace FormulaManager.Vehicle
             speed = maxSpeed;
         }
 
+        public void Stop()
+        {
+            speed = 0f;
+        }
+
         public void SetTireDegradationMultiplier(float d)
         {
             tireMultiplier = d;

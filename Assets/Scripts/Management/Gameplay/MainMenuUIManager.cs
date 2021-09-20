@@ -89,7 +89,7 @@ namespace FormulaManager.Management.Gameplay
 
         public void StartRace()
         {
-            // TODO: Call options manager here to set the team that the player chose
+            app.Save("player_data", saveData);
             app.LoadGameMode(selectedRace);
         }
 

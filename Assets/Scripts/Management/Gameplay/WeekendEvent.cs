@@ -12,14 +12,17 @@ namespace FormulaManager.Management.Gameplay
     {
         [SerializeField] private float duration = 3600f;
         [SerializeField] private float launchWaitTime = 5f;
+        [SerializeField] private Sector startFinishLine;
 
         private WaitForSeconds launchStall;
 
         protected WeekendManager manager = null;
         protected float timer = 0f;
         protected List<GameObject> carInstances = new List<GameObject>();
+        protected List<LapCounter> grid = new List<LapCounter>();
 
         public WeekendManager Manager { get => manager; set => manager = value; }
+        public LapCounter[] Grid { get => grid.ToArray(); }
 
         public virtual
         void Initialize(GameObject carPrefab, PathCreator path, Driver[] drivers, StartingPosition[] startingPositions)
@@ -54,6 +57,7 @@ namespace FormulaManager.Management.Gameplay
 
             if (timer >= duration)
             {
+                startFinishLine.LastLap = true;
                 manager.GoToNextEvent();
             }
         }

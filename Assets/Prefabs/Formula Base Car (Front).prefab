@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -3621248067758225103}
   - component: {fileID: 7719499361775904177}
   - component: {fileID: -6491592813990273419}
-  - component: {fileID: -3087756542899107124}
+  - component: {fileID: 4173033376932156397}
   m_Layer: 3
   m_Name: Formula Base Car (Front)
   m_TagString: Car
@@ -255,7 +255,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-3087756542899107124
+--- !u!114 &4173033376932156397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7757975285337786101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d34218508794b441b751091befd1309, type: 3}
+  m_Script: {fileID: 11500000, guid: a85e47a73e1f30e47bd81205ceb18c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7757975285969513307

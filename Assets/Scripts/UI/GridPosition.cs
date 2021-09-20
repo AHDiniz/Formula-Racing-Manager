@@ -20,7 +20,11 @@ namespace FormulaManager.UI
             int miliseconds = (int)((lapTime - (float)seconds) * 1000f);
             int minutes = seconds / 60;
 
-            this.lapTime.text = minutes + ":" + seconds + "." + miliseconds;
+            if (miliseconds >= 100)
+                this.lapTime.text = minutes + ":" + seconds + "." + miliseconds;
+            else if (miliseconds >= 10)
+                this.lapTime.text = minutes + ":" + seconds + ".0" + miliseconds;
+            else this.lapTime.text = minutes + ":" + seconds + ".00" + miliseconds;
         }
     }
 }

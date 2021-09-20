@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,18 +22,21 @@ namespace FormulaManager.Racing
 
         public override void Tick()
         {
-
+            grid = grid.OrderBy(lapCounter => lapCounter.FastestLap).ToList() as List<LapCounter>;
         }
 
         public override void Finish()
         {
-
+            
         }
 
         protected override void ExtraCarInit(GameObject carInstance, VehicleController controller)
         {
             TireManagement tire = carInstance.GetComponent<TireManagement>();
             tire.SwitchTire(qualiTire);
+
+            LapCounter lapCounter = carInstance.GetComponent<LapCounter>();
+            grid.Add(lapCounter);
 
             controller.CurrentPace = VehicleController.Pace.PushingHard;
         }
