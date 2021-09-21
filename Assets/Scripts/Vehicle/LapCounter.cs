@@ -15,6 +15,7 @@ namespace FormulaManager.Vehicle
         private Driver driver;
         private VehicleController controller;
 
+        public int LapCount { get => lapCount; }
         public float FastestLap { get => fastestLap; }
         public float PreviousLap { get => previousLap; }
         public float CurrentLap { get => currentLap; }

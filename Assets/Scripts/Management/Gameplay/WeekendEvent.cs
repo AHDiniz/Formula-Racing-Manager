@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,8 @@ namespace FormulaManager.Management.Gameplay
     public class WeekendEvent : MonoBehaviour
     {
         [SerializeField] private float duration = 3600f;
-        [SerializeField] private float launchWaitTime = 5f;
+        [SerializeField] private float launchWaitTime = 15f;
         [SerializeField] private Sector startFinishLine;
-
-        private WaitForSeconds launchStall;
 
         protected WeekendManager manager = null;
         protected float timer = 0f;
@@ -27,7 +26,6 @@ namespace FormulaManager.Management.Gameplay
         public virtual
         void Initialize(GameObject carPrefab, PathCreator path, Driver[] drivers, StartingPosition[] startingPositions)
         {
-            launchStall = new WaitForSeconds(launchWaitTime);
             for (int i = 0; i < drivers.Length; ++i)
             {
                 float t = startingPositions[i].GetTForThisPosition();
@@ -72,9 +70,23 @@ namespace FormulaManager.Management.Gameplay
 
         }
 
+        public VehicleStrategy[] GetPlayerStrategies(Driver[] drivers)
+        {
+            List<VehicleStrategy> strategies = new List<VehicleStrategy>();
+            foreach (LapCounter lapCounter in grid)
+            {
+                if (Array.IndexOf(drivers, lapCounter.DriverData) != -1)
+                {
+                    VehicleStrategy strategy = lapCounter.gameObject.GetComponent<VehicleStrategy>();
+                    strategies.Add(strategy);
+                }
+            }
+            return strategies.ToArray();
+        }
+
         private IEnumerator Launch(VehicleController controller)
         {
-            yield return launchStall;
+            yield return new WaitForSeconds(launchWaitTime);
             controller.Launch();
         }
     }

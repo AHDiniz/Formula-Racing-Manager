@@ -39,7 +39,6 @@ namespace FormulaManager.Management.Gameplay
         {
             if (scene.name.Contains("Grand Prix") || scene.name == "Main Menu")
             {
-                Debug.Log(scene.name);
                 gameController = GameObject.FindWithTag("GameController");
                 IGameplayManager[] managers = gameController.GetComponents<IGameplayManager>();
                 foreach (IGameplayManager m in managers)

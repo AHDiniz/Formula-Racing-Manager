@@ -9,10 +9,12 @@ namespace FormulaManager.Management.Gameplay
     [RequireComponent(typeof(WeekendManager))]
     public class GridUIManager : MonoBehaviour, IGameplayManager
     {
+        [SerializeField] private GameObject gridParent;
         [SerializeField] private List<GridPosition> gridPositions = new List<GridPosition>();
         
         private WeekendManager manager;
         private bool isDone = false;
+        private bool gridActive = false;
 
         public bool IsDone { get => isDone; }
 
@@ -36,6 +38,12 @@ namespace FormulaManager.Management.Gameplay
         void IGameplayManager.Finish()
         {
 
+        }
+
+        public void SwitchGridOnOff()
+        {
+            gridActive = !gridActive;
+            gridParent.SetActive(gridActive);
         }
     }
 }

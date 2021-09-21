@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 7719499361775904177}
   - component: {fileID: -6491592813990273419}
   - component: {fileID: 4173033376932156397}
+  - component: {fileID: -4054311187186812450}
   m_Layer: 3
   m_Name: Formula Base Car (Front)
   m_TagString: Car
@@ -171,6 +172,7 @@ MonoBehaviour:
   driver: {fileID: 0}
   minBaseSpeed: 3
   maxBaseSpeed: 5
+  pitLaneSpeed: 1.5
   initialPace: 2
   sectorMask:
     serializedVersion: 2
@@ -265,6 +267,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a85e47a73e1f30e47bd81205ceb18c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4054311187186812450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757975285337786101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e958d3c8d8f2449a16ed1f7099f52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7757975285969513307

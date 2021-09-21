@@ -26,6 +26,7 @@ namespace FormulaManager.Vehicle
         [Header("Performance Stats")]
         [SerializeField] private Driver driver;
         [SerializeField] private float minBaseSpeed, maxBaseSpeed;
+        [SerializeField] private float pitLaneSpeed;
         [SerializeField] private Pace initialPace = Pace.Neutral;
 
         [Header("Sector Detection")]
@@ -34,6 +35,7 @@ namespace FormulaManager.Vehicle
         [Header("Movement Settings")]
         [SerializeField] private bool goBackwards = true;
 
+        private bool pitStop = false;
         private float speed = 0, distanceTravelled = 0f, speedScale = 1, speedMultiplier = 0;
         private float maxSpeed = 0, paceMultiplier = .9f, tireMultiplier = 1f;
         private Pace pace;
@@ -87,7 +89,7 @@ namespace FormulaManager.Vehicle
             
             float targetSpeed = SpeedScale * maxSpeed * speedMultiplier;
             speed = Mathf.Lerp(speed, targetSpeed, Time.deltaTime * 1 / ((float)team.Acceleration / 20));
-            speed = Mathf.Clamp(speed, minBaseSpeed, maxSpeed);
+            speed = !pitStop ? (Mathf.Clamp(speed, minBaseSpeed, maxSpeed)) : pitLaneSpeed;
             if (!goBackwards) distanceTravelled += speed * paceMultiplier * tireMultiplier * Time.deltaTime;
             else distanceTravelled += -speed * Time.deltaTime;
             transform.position = path.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
@@ -107,6 +109,16 @@ namespace FormulaManager.Vehicle
         public void Stop()
         {
             speed = 0f;
+        }
+
+        public void StartPitStop()
+        {
+            pitStop = true;
+        }
+
+        public void EndPitStop()
+        {
+            pitStop = false;
         }
 
         public void SetTireDegradationMultiplier(float d)
