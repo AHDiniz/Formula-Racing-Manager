@@ -83,6 +83,15 @@ namespace FormulaManager.Management.Gameplay
             }
         }
 
+        public void SetDriverData()
+        {
+            for (int i = 0; i < drivers.Length; ++i)
+            {
+                Debug.Log(drivers[i].Name);
+                driverNames[i].text = drivers[i].Number + " " + drivers[i].Tag;
+            }
+        }
+
         public void SetStrategy(int driverID)
         {
             TireType selectedTire = null;

@@ -52,7 +52,8 @@ namespace FormulaManager.Management.Gameplay
 
             int playerDriverIndex = 0;
             foreach (Driver d in drivers)
-            {                
+            {
+                Debug.Log(playerTeamName);
                 if (d.CurrentTeam.Name == playerTeamName)
                 {
                     playerDrivers[playerDriverIndex] = d;
@@ -60,16 +61,16 @@ namespace FormulaManager.Management.Gameplay
                 }
             }
 
-            strategyUIManager.Drivers = playerDrivers;
-            
             events[currentEvent].Manager = this;
             events[currentEvent].Initialize(carPrefab, path, drivers.ToArray(), startingPositions.ToArray());
-            
+
+            StartCoroutine(WaitForInitialization());
+
+            strategyUIManager.Drivers = playerDrivers;
             strategyUIManager.CurrentEvent = events[currentEvent];
             strategyUIManager.Strategies = events[currentEvent].GetPlayerStrategies(playerDrivers);
             strategyUIManager.PopulatePaceDropdown();
-
-            StartCoroutine(WaitForInitialization());
+            strategyUIManager.SetDriverData();
         }
 
         void IGameplayManager.Tick()
