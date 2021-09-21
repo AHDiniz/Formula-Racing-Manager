@@ -26,12 +26,14 @@ namespace FormulaManager.Management.Global
             return true;
         }
 
-        public object Load(string path)
+        public object Load(string fileName)
         {
+            string path = Application.persistentDataPath + "/saves/" + fileName + ".save";
             if (!File.Exists(path))
                 return null;
             
             FileStream file = File.Open(path, FileMode.Open);
+            Debug.Log(file != null);
 
             try
             {

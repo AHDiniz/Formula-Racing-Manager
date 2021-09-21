@@ -42,7 +42,8 @@ namespace FormulaManager.Management.Gameplay
             waitForNextEvent = new WaitForSeconds(secondsForNextEvent);
 
             app = AppManager.Instance;
-            saveData = app.Load("player_data") as SaveData;
+            saveData = (SaveData)(app.Load("player_data"));
+            Debug.Log(saveData != null);
 
             if (saveData != null)
             {
@@ -53,7 +54,6 @@ namespace FormulaManager.Management.Gameplay
             int playerDriverIndex = 0;
             foreach (Driver d in drivers)
             {
-                Debug.Log(playerTeamName);
                 if (d.CurrentTeam.Name == playerTeamName)
                 {
                     playerDrivers[playerDriverIndex] = d;

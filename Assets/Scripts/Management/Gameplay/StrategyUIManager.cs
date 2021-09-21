@@ -87,7 +87,6 @@ namespace FormulaManager.Management.Gameplay
         {
             for (int i = 0; i < drivers.Length; ++i)
             {
-                Debug.Log(drivers[i].Name);
                 driverNames[i].text = drivers[i].Number + " " + drivers[i].Tag;
             }
         }

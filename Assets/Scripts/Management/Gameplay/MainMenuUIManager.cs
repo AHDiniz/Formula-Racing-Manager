@@ -44,7 +44,7 @@ namespace FormulaManager.Management.Gameplay
 
         void IGameplayManager.Finish()
         {
-            app.Save("player_data", saveData);
+            
         }
 
         public void GoToOptions(GameObject toDeactivate)
