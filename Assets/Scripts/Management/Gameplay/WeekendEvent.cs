@@ -20,6 +20,7 @@ namespace FormulaManager.Management.Gameplay
         protected List<GameObject> carInstances = new List<GameObject>();
         protected List<LapCounter> grid = new List<LapCounter>();
 
+        public float SecondsRemaining { get => (duration * manager.RaceDuration) - timer; }
         public WeekendManager Manager { get => manager; set => manager = value; }
         public LapCounter[] Grid { get => grid.ToArray(); }
 
@@ -53,7 +54,7 @@ namespace FormulaManager.Management.Gameplay
         {
             timer += Time.deltaTime;
 
-            if (timer >= duration)
+            if (timer >= duration * manager.RaceDuration)
             {
                 startFinishLine.LastLap = true;
                 manager.GoToNextEvent();
@@ -62,7 +63,7 @@ namespace FormulaManager.Management.Gameplay
 
         public virtual void Finish()
         {
-
+            StartCoroutine(WaitForNextEvent());
         }
 
         protected virtual void ExtraCarInit(GameObject carInstance, VehicleController controller)
@@ -88,6 +89,13 @@ namespace FormulaManager.Management.Gameplay
         {
             yield return new WaitForSeconds(launchWaitTime);
             controller.Launch();
+        }
+
+        private IEnumerator WaitForNextEvent()
+        {
+            yield return new WaitForSeconds(manager.SecondsForNextEvent);
+            for (int i = 0; i < carInstances.Count; ++i)
+                Destroy(carInstances[i]);
         }
     }
 }

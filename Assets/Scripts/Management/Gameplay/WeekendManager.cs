@@ -30,6 +30,8 @@ namespace FormulaManager.Management.Gameplay
 
         private StrategyUIManager strategyUIManager;
 
+        public float RaceDuration { get => raceDuration; }
+        public float SecondsForNextEvent { get => secondsForNextEvent; }
         public bool WaitingNextEvent { get => waitingNextEvent; }
         public Driver[] PlayerDrivers { get => playerDrivers; }
         public WeekendEvent CurrentEvent { get => events[currentEvent]; }
@@ -99,13 +101,16 @@ namespace FormulaManager.Management.Gameplay
             waitingNextEvent = true;
             yield return waitForNextEvent;
             events[currentEvent].Finish();
-            currentEvent = (currentEvent + 1) % events.Count;
-            if (events[currentEvent].Manager == null)
-                events[currentEvent].Manager = this;
-            events[currentEvent].Initialize(carPrefab, path, drivers.ToArray(), startingPositions.ToArray());
-            strategyUIManager.CurrentEvent = events[currentEvent];
-            strategyUIManager.Strategies = events[currentEvent].GetPlayerStrategies(playerDrivers);
-            waitingNextEvent = false;
+            if (currentEvent + 1 < events.Count)
+            {
+                ++currentEvent;
+                if (events[currentEvent].Manager == null)
+                    events[currentEvent].Manager = this;
+                events[currentEvent].Initialize(carPrefab, path, drivers.ToArray(), startingPositions.ToArray());
+                strategyUIManager.CurrentEvent = events[currentEvent];
+                strategyUIManager.Strategies = events[currentEvent].GetPlayerStrategies(playerDrivers);
+                waitingNextEvent = false;
+            }
         }
     }
 }

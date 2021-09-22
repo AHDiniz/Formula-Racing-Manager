@@ -10,6 +10,7 @@ namespace FormulaManager.Management.Global
     {
         private string sceneName;
         private GameObject context;
+        private Context c;
         private AppManager app;
 
         public string SceneName { get => sceneName; }
@@ -24,11 +25,12 @@ namespace FormulaManager.Management.Global
         {
             app.AddAsyncOperation(SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive));
             context = new GameObject("Context");
-            Context c = context.AddComponent<Context>() as Context;
+            c = context.AddComponent<Context>() as Context;
         }
 
         void IGameMode.Finish()
         {
+            c.Finish();
             Object.Destroy(context);
             app.AddAsyncOperation(SceneManager.UnloadSceneAsync(sceneName));
         }

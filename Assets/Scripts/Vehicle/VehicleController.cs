@@ -41,6 +41,7 @@ namespace FormulaManager.Vehicle
         private Pace pace;
         private Team team;
 
+        public float DistanceTravelled { get => distanceTravelled; }
         public float SpeedScale { get => speedScale; set => speedScale = value; }
         public float Speed { get => speed; }
         public float PaceMultiplier { get => paceMultiplier; }
