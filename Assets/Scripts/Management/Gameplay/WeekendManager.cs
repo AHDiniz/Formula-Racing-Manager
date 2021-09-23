@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using FormulaManager.Vehicle;
 using FormulaManager.Racing;
 using FormulaManager.Stats;
 using FormulaManager.Management.Global;
@@ -103,10 +104,16 @@ namespace FormulaManager.Management.Gameplay
             events[currentEvent].Finish();
             if (currentEvent + 1 < events.Count)
             {
+                LapCounter[] grid = events[currentEvent].Grid;
+                Driver[] d = new Driver[grid.Length];
+                for (int i = 0; i < grid.Length; ++i)
+                    d[i] = grid[i].DriverData;
+
                 ++currentEvent;
                 if (events[currentEvent].Manager == null)
                     events[currentEvent].Manager = this;
-                events[currentEvent].Initialize(carPrefab, path, drivers.ToArray(), startingPositions.ToArray());
+                Debug.Log(events[currentEvent]);
+                events[currentEvent].Initialize(carPrefab, path, d, startingPositions.ToArray());
                 strategyUIManager.CurrentEvent = events[currentEvent];
                 strategyUIManager.Strategies = events[currentEvent].GetPlayerStrategies(playerDrivers);
                 waitingNextEvent = false;

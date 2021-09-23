@@ -22,13 +22,25 @@ namespace FormulaManager.UI
         private void Update()
         {
             WeekendEvent currentEvent = manager.CurrentEvent;
-            LapCounter first = currentEvent.Grid[0];
-            float secondsRemaining = currentEvent.SecondsRemaining;
+            if (currentEvent != null)
+            {
+                if (currentEvent.Grid != null && currentEvent.Grid.Length != 0)
+                {
+                    LapCounter first = currentEvent.Grid[0];
+                    if (first != null)
+                    {
+                        float secondsRemaining = currentEvent.SecondsRemaining;
 
-            int minutesRemaining = (int)(secondsRemaining / 60);
-            int secondsToShow = minutesRemaining * 60 - (int)secondsRemaining;
+                        int minutesRemaining = (int)(secondsRemaining / 60);
+                        int secondsToShow = minutesRemaining * 60 - (int)secondsRemaining;
 
-            text.text = "Laps: " + first.LapCount + " Time: " + minutesRemaining + ":" + secondsToShow;
+                        minutesRemaining = Mathf.Abs(minutesRemaining);
+                        secondsToShow = Mathf.Abs(secondsToShow);
+
+                        text.text = "Laps: " + first.LapCount + " Time Remaining: " + minutesRemaining + ":" + secondsToShow;
+                    }
+                }
+            }
         }
     }
 }
